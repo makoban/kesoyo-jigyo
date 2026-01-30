@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KESOYO 収支計画書（3年計画）</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 48px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #c9a962;
+        }
+
+        .header h1 { font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; color: #c9a962; font-weight: 600; }
+        .header .date { color: #777; font-size: 14px; margin-top: 8px; }
+
+        h2 {
+            font-size: 18px; font-weight: 600; color: #1a1a1a;
+            margin: 36px 0 16px; padding-left: 12px;
+            border-left: 4px solid #c9a962;
+        }
+
+        h3 { font-size: 15px; font-weight: 600; color: #555; margin: 20px 0 12px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        thead th { background: #1a1a1a; color: #fff; padding: 12px 16px; text-align: left; font-weight: 500; }
+        tbody td { padding: 12px 16px; border-bottom: 1px solid #e8e8e8; }
+        tbody tr:nth-child(even) { background: #fafafa; }
+
+        .highlight { background: #fff9e6 !important; font-weight: 600; }
+        .highlight td { color: #1a1a1a; }
+        .number { text-align: right; }
+        .positive { color: #2e7d32; font-weight: 600; }
+        .negative { color: #c62828; }
+
+        .hero-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: #fff; padding: 32px; border-radius: 12px; margin: 24px 0;
+            text-align: center;
+        }
+        .hero-box h3 { color: #c9a962; margin: 0 0 24px 0; font-size: 18px; }
+        .hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .hero-item .label { font-size: 12px; opacity: 0.8; margin-bottom: 4px; }
+        .hero-item .value { font-size: 28px; font-weight: 700; color: #c9a962; }
+        .hero-item .unit { font-size: 14px; color: #c9a962; }
+        .hero-item .year { font-size: 11px; opacity: 0.7; margin-top: 4px; }
+
+        .summary-box {
+            background: #f8f8f8; padding: 24px; border-radius: 8px;
+            margin: 24px 0; border: 1px solid #e8e8e8;
+        }
+
+        .profit-highlight {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: #fff; padding: 32px; border-radius: 12px; margin: 24px 0;
+            text-align: center;
+        }
+        .profit-highlight h3 { color: #fff; margin: 0 0 16px 0; }
+        .profit-highlight .amount { font-size: 48px; font-weight: 700; }
+        .profit-highlight .note { font-size: 14px; opacity: 0.9; margin-top: 12px; }
+
+        .note {
+            background: #fff9e6; border-left: 4px solid #c9a962;
+            padding: 16px; margin: 16px 0; font-size: 13px;
+        }
+        .note strong { color: #1a1a1a; }
+
+        .warning {
+            background: #fff3f3; border-left: 4px solid #c62828;
+            padding: 16px; margin: 16px 0; font-size: 13px;
+        }
+
+        .year-section {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .year-section h3 {
+            color: #1a1a1a;
+            margin-top: 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #c9a962;
+        }
+
+        .footer {
+            margin-top: 40px; padding-top: 24px;
+            border-top: 1px solid #e8e8e8;
+            text-align: center; color: #999; font-size: 12px;
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 24px; }
+            .hero-box, .profit-highlight { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>KESOYO 収支計画書</h1>
+            <p class="subtitle">3年成長戦略計画</p>
+            <p class="date">作成日: 2026年1月30日</p>
+        </div>
+
+        <!-- 3-Year Summary -->
+        <div class="hero-box">
+            <h3>📊 3年間サマリー</h3>
+            <div class="hero-grid">
+                <div class="hero-item">
+                    <div class="label">1年目</div>
+                    <div class="value">5,000<span class="unit">本</span></div>
+                    <div class="year">売上: 5,225万円</div>
+                </div>
+                <div class="hero-item">
+                    <div class="label">2年目</div>
+                    <div class="value">20,000<span class="unit">本</span></div>
+                    <div class="year">売上: 2.23億円</div>
+                </div>
+                <div class="hero-item">
+                    <div class="label">3年目</div>
+                    <div class="value">40,000<span class="unit">本</span></div>
+                    <div class="year">売上: 4.75億円</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>1. 販売計画の前提条件</h2>
+        <table>
+            <thead>
+                <tr><th>項目</th><th class="number">1年目</th><th class="number">2年目</th><th class="number">3年目以降</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>年間販売目標</td><td class="number"><strong>5,000本</strong></td><td class="number"><strong>20,000本</strong></td><td class="number"><strong>40,000本</strong></td></tr>
+                <tr><td>月間販売目標</td><td class="number">417本</td><td class="number">1,667本</td><td class="number">3,333本</td></tr>
+                <tr><td>単体購入比率</td><td class="number">50%</td><td class="number">50%</td><td class="number">50%</td></tr>
+                <tr><td>サブスク比率</td><td class="number">50%</td><td class="number">50%</td><td class="number">50%</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>📐 計算前提</strong><br>
+            • 仕入原価: ¥4,200/本<br>
+            • 広告宣伝費（CPM）: 上代の15% = ¥2,220/本<br>
+            • 毎年検査費用（人体検査・消火検査）: ¥1,000,000/年
+        </div>
+
+        <!-- 1年目 -->
+        <h2>2. 1年目（立ち上げ期）</h2>
+        <div class="year-section">
+            <h3>📦 販売数: 5,000本</h3>
+
+            <h4 style="margin-top:16px;">売上構成</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>単体購入</td><td class="number">¥14,800</td><td class="number">2,500本</td><td class="number">¥37,000,000</td></tr>
+                    <tr><td>サブスク初期費用</td><td class="number">¥2,980</td><td class="number">2,500件</td><td class="number">¥7,450,000</td></tr>
+                    <tr><td>サブスク月額（累積）</td><td class="number">¥480</td><td class="number">-</td><td class="number">¥7,794,840</td></tr>
+                    <tr class="highlight"><td><strong>売上合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number"><strong>¥52,244,840</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">変動費</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>仕入原価</td><td class="number">¥4,200</td><td class="number">5,000本</td><td class="number negative">▲¥21,000,000</td></tr>
+                    <tr><td>配送料</td><td class="number">¥1,000</td><td class="number">5,000本</td><td class="number negative">▲¥5,000,000</td></tr>
+                    <tr><td>決済手数料（4%）</td><td class="number">-</td><td class="number">-</td><td class="number negative">▲¥2,089,794</td></tr>
+                    <tr><td>梱包材</td><td class="number">¥400</td><td class="number">5,000本</td><td class="number negative">▲¥2,000,000</td></tr>
+                    <tr><td>広告宣伝費（CPM）</td><td class="number">¥2,220</td><td class="number">5,000本</td><td class="number negative">▲¥11,100,000</td></tr>
+                    <tr class="highlight"><td><strong>変動費合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number negative"><strong>▲¥41,189,794</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">固定費（1年目）</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">月額</th><th class="number">年間</th><th>備考</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>人件費（1.5人工）</td><td class="number">¥450,000</td><td class="number">¥5,400,000</td><td>CS・運営業務</td></tr>
+                    <tr><td>倉庫・在庫管理</td><td class="number">¥80,000</td><td class="number">¥960,000</td><td>保管・出荷業務</td></tr>
+                    <tr><td>システム費用</td><td class="number">¥30,000</td><td class="number">¥360,000</td><td>決済・CRM・ウェブ</td></tr>
+                    <tr><td>その他経費</td><td class="number">¥50,000</td><td class="number">¥600,000</td><td>通信・備品・雑費</td></tr>
+                    <tr class="highlight"><td><strong>検査費用</strong></td><td class="number">-</td><td class="number"><strong>¥1,000,000</strong></td><td>人体検査・消火検査</td></tr>
+                    <tr class="highlight"><td><strong>固定費合計</strong></td><td class="number">-</td><td class="number negative"><strong>▲¥8,320,000</strong></td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <div class="summary-box">
+                <h4 style="margin-top:0;">🎯 1年目 損益</h4>
+                <table style="margin-bottom:0;">
+                    <tbody>
+                        <tr><td>売上高</td><td class="number">¥52,244,840</td></tr>
+                        <tr><td>変動費</td><td class="number negative">▲¥41,189,794</td></tr>
+                        <tr><td>粗利益</td><td class="number">¥11,055,046</td></tr>
+                        <tr><td>固定費</td><td class="number negative">▲¥8,320,000</td></tr>
+                        <tr class="highlight"><td><strong>営業利益</strong></td><td class="number positive"><strong>¥2,735,046</strong></td></tr>
+                        <tr><td>営業利益率</td><td class="number">5.2%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2年目 -->
+        <h2>3. 2年目（拡大期）</h2>
+        <div class="year-section">
+            <h3>🚀 販売数: 20,000本 ＋ ショールーム開設</h3>
+
+            <h4 style="margin-top:16px;">売上構成</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>単体購入</td><td class="number">¥14,800</td><td class="number">10,000本</td><td class="number">¥148,000,000</td></tr>
+                    <tr><td>サブスク初期費用（新規）</td><td class="number">¥2,980</td><td class="number">10,000件</td><td class="number">¥29,800,000</td></tr>
+                    <tr><td>サブスク月額（新規累積）</td><td class="number">¥480</td><td class="number">-</td><td class="number">¥31,179,360</td></tr>
+                    <tr><td>サブスク月額（1年目継続）</td><td class="number">¥480</td><td class="number">2,500件×12</td><td class="number">¥14,400,000</td></tr>
+                    <tr class="highlight"><td><strong>売上合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number"><strong>¥223,379,360</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">変動費</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>仕入原価</td><td class="number">¥4,200</td><td class="number">20,000本</td><td class="number negative">▲¥84,000,000</td></tr>
+                    <tr><td>配送料</td><td class="number">¥1,000</td><td class="number">20,000本</td><td class="number negative">▲¥20,000,000</td></tr>
+                    <tr><td>決済手数料（4%）</td><td class="number">-</td><td class="number">-</td><td class="number negative">▲¥8,935,174</td></tr>
+                    <tr><td>梱包材</td><td class="number">¥400</td><td class="number">20,000本</td><td class="number negative">▲¥8,000,000</td></tr>
+                    <tr><td>広告宣伝費（CPM）</td><td class="number">¥2,220</td><td class="number">20,000本</td><td class="number negative">▲¥44,400,000</td></tr>
+                    <tr class="highlight"><td><strong>変動費合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number negative"><strong>▲¥165,335,174</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">固定費（2年目・ショールーム開設）</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">月額</th><th class="number">年間</th><th>備考</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>人件費（4人工）</td><td class="number">¥1,400,000</td><td class="number">¥16,800,000</td><td>東京＋CS増員</td></tr>
+                    <tr class="highlight"><td><strong>ショールーム家賃</strong></td><td class="number"><strong>¥500,000</strong></td><td class="number"><strong>¥6,000,000</strong></td><td>東京（渋谷・表参道等）</td></tr>
+                    <tr><td>倉庫・在庫管理</td><td class="number">¥200,000</td><td class="number">¥2,400,000</td><td>規模拡大</td></tr>
+                    <tr><td>システム費用</td><td class="number">¥100,000</td><td class="number">¥1,200,000</td><td>決済・CRM強化</td></tr>
+                    <tr><td>その他経費</td><td class="number">¥150,000</td><td class="number">¥1,800,000</td><td>通信・備品・雑費</td></tr>
+                    <tr class="highlight"><td><strong>検査費用</strong></td><td class="number">-</td><td class="number"><strong>¥1,000,000</strong></td><td>人体検査・消火検査</td></tr>
+                    <tr class="highlight"><td><strong>固定費合計</strong></td><td class="number">-</td><td class="number negative"><strong>▲¥29,200,000</strong></td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <div class="summary-box">
+                <h4 style="margin-top:0;">🎯 2年目 損益</h4>
+                <table style="margin-bottom:0;">
+                    <tbody>
+                        <tr><td>売上高</td><td class="number">¥223,379,360</td></tr>
+                        <tr><td>変動費</td><td class="number negative">▲¥165,335,174</td></tr>
+                        <tr><td>粗利益</td><td class="number">¥58,044,186</td></tr>
+                        <tr><td>固定費</td><td class="number negative">▲¥29,200,000</td></tr>
+                        <tr class="highlight"><td><strong>営業利益</strong></td><td class="number positive"><strong>¥28,844,186</strong></td></tr>
+                        <tr><td>営業利益率</td><td class="number">12.9%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3年目 -->
+        <h2>4. 3年目以降（安定成長期）</h2>
+        <div class="year-section">
+            <h3>🏆 販売数: 40,000本/年</h3>
+
+            <h4 style="margin-top:16px;">売上構成</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>単体購入</td><td class="number">¥14,800</td><td class="number">20,000本</td><td class="number">¥296,000,000</td></tr>
+                    <tr><td>サブスク初期費用（新規）</td><td class="number">¥2,980</td><td class="number">20,000件</td><td class="number">¥59,600,000</td></tr>
+                    <tr><td>サブスク月額（新規累積）</td><td class="number">¥480</td><td class="number">-</td><td class="number">¥62,358,720</td></tr>
+                    <tr><td>サブスク月額（1-2年目継続）</td><td class="number">¥480</td><td class="number">12,500件×12</td><td class="number">¥57,600,000</td></tr>
+                    <tr class="highlight"><td><strong>売上合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number"><strong>¥475,558,720</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">変動費</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">単価</th><th class="number">数量</th><th class="number">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>仕入原価</td><td class="number">¥4,200</td><td class="number">40,000本</td><td class="number negative">▲¥168,000,000</td></tr>
+                    <tr><td>配送料</td><td class="number">¥1,000</td><td class="number">40,000本</td><td class="number negative">▲¥40,000,000</td></tr>
+                    <tr><td>決済手数料（4%）</td><td class="number">-</td><td class="number">-</td><td class="number negative">▲¥19,022,349</td></tr>
+                    <tr><td>梱包材</td><td class="number">¥400</td><td class="number">40,000本</td><td class="number negative">▲¥16,000,000</td></tr>
+                    <tr><td>広告宣伝費（CPM）</td><td class="number">¥2,220</td><td class="number">40,000本</td><td class="number negative">▲¥88,800,000</td></tr>
+                    <tr class="highlight"><td><strong>変動費合計</strong></td><td class="number">-</td><td class="number">-</td><td class="number negative"><strong>▲¥331,822,349</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:16px;">固定費（3年目）</h4>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th class="number">月額</th><th class="number">年間</th><th>備考</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>人件費（6人工）</td><td class="number">¥2,100,000</td><td class="number">¥25,200,000</td><td>東京＋地方拠点</td></tr>
+                    <tr><td>ショールーム家賃</td><td class="number">¥500,000</td><td class="number">¥6,000,000</td><td>東京</td></tr>
+                    <tr><td>倉庫・在庫管理</td><td class="number">¥350,000</td><td class="number">¥4,200,000</td><td>規模拡大</td></tr>
+                    <tr><td>システム費用</td><td class="number">¥150,000</td><td class="number">¥1,800,000</td><td>決済・CRM・分析</td></tr>
+                    <tr><td>その他経費</td><td class="number">¥200,000</td><td class="number">¥2,400,000</td><td>通信・備品・雑費</td></tr>
+                    <tr class="highlight"><td><strong>検査費用</strong></td><td class="number">-</td><td class="number"><strong>¥1,000,000</strong></td><td>人体検査・消火検査</td></tr>
+                    <tr class="highlight"><td><strong>固定費合計</strong></td><td class="number">-</td><td class="number negative"><strong>▲¥40,600,000</strong></td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <div class="summary-box">
+                <h4 style="margin-top:0;">🎯 3年目 損益</h4>
+                <table style="margin-bottom:0;">
+                    <tbody>
+                        <tr><td>売上高</td><td class="number">¥475,558,720</td></tr>
+                        <tr><td>変動費</td><td class="number negative">▲¥331,822,349</td></tr>
+                        <tr><td>粗利益</td><td class="number">¥143,736,371</td></tr>
+                        <tr><td>固定費</td><td class="number negative">▲¥40,600,000</td></tr>
+                        <tr class="highlight"><td><strong>営業利益</strong></td><td class="number positive"><strong>¥103,136,371</strong></td></tr>
+                        <tr><td>営業利益率</td><td class="number">21.7%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3年間サマリー -->
+        <h2>5. 3年間損益サマリー</h2>
+        <div class="profit-highlight">
+            <h3>🎯 3年間累計営業利益</h3>
+            <div class="amount">¥1.35億円</div>
+            <div class="note">3年目営業利益率: 21.7%</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr><th>指標</th><th class="number">1年目</th><th class="number">2年目</th><th class="number">3年目</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>販売数</td><td class="number">5,000本</td><td class="number">20,000本</td><td class="number">40,000本</td></tr>
+                <tr><td>売上高</td><td class="number">¥52,244,840</td><td class="number">¥223,379,360</td><td class="number">¥475,558,720</td></tr>
+                <tr><td>変動費</td><td class="number negative">▲¥41,189,794</td><td class="number negative">▲¥165,335,174</td><td class="number negative">▲¥331,822,349</td></tr>
+                <tr><td>粗利益</td><td class="number">¥11,055,046</td><td class="number">¥58,044,186</td><td class="number">¥143,736,371</td></tr>
+                <tr><td>固定費</td><td class="number negative">▲¥8,320,000</td><td class="number negative">▲¥29,200,000</td><td class="number negative">▲¥40,600,000</td></tr>
+                <tr class="highlight"><td><strong>営業利益</strong></td><td class="number positive"><strong>¥2,735,046</strong></td><td class="number positive"><strong>¥28,844,186</strong></td><td class="number positive"><strong>¥103,136,371</strong></td></tr>
+                <tr><td>営業利益率</td><td class="number">5.2%</td><td class="number">12.9%</td><td class="number">21.7%</td></tr>
+                <tr><td>サブスク継続契約数</td><td class="number">2,500件</td><td class="number">12,500件</td><td class="number">32,500件</td></tr>
+            </tbody>
+        </table>
+
+        <h2>6. 必要資金（初期投資）</h2>
+        <table>
+            <thead>
+                <tr><th>項目</th><th class="number">金額</th><th>備考</th></tr>
+            </thead>
+            <tbody>
+                <tr class="highlight"><td><strong>認証検査申請費用</strong></td><td class="number"><strong>¥2,000,000</strong></td><td>消防庁認証取得</td></tr>
+                <tr class="highlight"><td><strong>初期在庫（2,000本）</strong></td><td class="number"><strong>¥8,400,000</strong></td><td>@¥4,200×2,000本</td></tr>
+                <tr><td>運転資金（3ヶ月分）</td><td class="number">¥1,830,000</td><td>固定費3ヶ月</td></tr>
+                <tr><td>広告初期投資</td><td class="number">¥500,000</td><td>ローンチキャンペーン</td></tr>
+                <tr><td>システム構築</td><td class="number">¥300,000</td><td>EC・決済・CRM</td></tr>
+                <tr><td>予備費</td><td class="number">¥770,000</td><td>不測の事態対応</td></tr>
+                <tr class="highlight"><td><strong>必要資金合計</strong></td><td class="number"><strong>¥13,800,000</strong></td><td>約1,380万円</td></tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>📅 2年目追加投資</strong><br>
+            ショールーム開設: 敷金・礼金・内装費約¥3,000,000〜5,000,000を別途確保
+        </div>
+
+        <h2>7. リスク要因と対策</h2>
+        <table>
+            <thead>
+                <tr><th>リスク</th><th>影響</th><th>対策</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>販売目標未達</td><td>固定費負担による赤字</td><td>広告効率化・販路拡大</td></tr>
+                <tr><td>CPM悪化</td><td>広告費率15%超過</td><td>LTV向上・リピート獲得</td></tr>
+                <tr><td>サブスク解約率上昇</td><td>継続売上の減少</td><td>違約金設定・顧客満足度向上</td></tr>
+                <tr><td>仕入価格上昇</td><td>粗利率低下</td><td>大量発注による価格交渉</td></tr>
+                <tr><td>ショールーム不振</td><td>固定費増加</td><td>EC連携・体験特化</td></tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <p>© 2026 Bantex Inc. | KESOYO 消火器事業</p>
+        </div>
+    </div>
+</body>
+</html>
