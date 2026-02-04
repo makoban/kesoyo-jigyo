@@ -227,25 +227,83 @@
             .summary-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
 
+        /* モバイル対応 - 横スクロールなし */
         @media (max-width: 768px) {
-            body { padding: 16px; }
-            .container { padding: 24px 16px; }
-            .header h1 { font-size: 22px; }
-            .summary-grid { grid-template-columns: repeat(2, 1fr); }
-            .premise-grid { grid-template-columns: 1fr; }
-            table { font-size: 12px; min-width: 500px; }
-            .year-section { overflow-x: auto; }
-            thead th, tbody td { padding: 8px 10px; white-space: nowrap; }
-            .total-highlight .value { font-size: 28px; }
+            body { padding: 8px; font-size: 13px; }
+            .container { padding: 16px 12px; }
+            .header h1 { font-size: 20px; }
+            .header .subtitle { font-size: 13px; }
+            .header .date { font-size: 11px; }
+            h2 { font-size: 15px; margin: 24px 0 12px; }
+
+            .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .summary-item { padding: 10px 8px; }
+            .summary-item .year { font-size: 10px; }
+            .summary-item .sales { font-size: 16px; }
+            .summary-item .profit { font-size: 11px; }
+            .summary-item .units { font-size: 9px; }
+            .summary-section { padding: 16px; }
+            .summary-section h3 { font-size: 14px; margin-bottom: 16px; }
+            .total-highlight .label { font-size: 12px; }
+            .total-highlight .value { font-size: 24px; }
+            .total-highlight .sub { font-size: 10px; }
+
+            .premise-grid { grid-template-columns: 1fr; gap: 16px; }
+            .premise-column h4 { font-size: 12px; }
+            .premise-item { font-size: 11px; padding: 6px 0; }
+            .premise-box { padding: 16px; }
+
+            .note { font-size: 11px; padding: 12px; }
+
+            /* テーブル - 横スクロールなし、小さいフォント */
+            table {
+                font-size: 9px;
+                width: 100%;
+                table-layout: fixed;
+            }
+            thead th {
+                padding: 6px 4px;
+                font-size: 8px;
+                word-break: break-all;
+            }
+            tbody td {
+                padding: 6px 4px;
+                word-break: break-all;
+                white-space: normal;
+            }
+
+            .year-section { padding: 12px; overflow-x: visible; }
+            .year-section h3 { font-size: 13px; }
+
+            .details-section { margin-top: 24px; padding-top: 24px; }
         }
 
         @media (max-width: 480px) {
-            body { padding: 8px; }
-            .container { padding: 16px 12px; }
+            body { padding: 4px; }
+            .container { padding: 12px 8px; }
             .header h1 { font-size: 18px; }
+            .header .subtitle { font-size: 12px; }
+            h2 { font-size: 14px; padding-left: 8px; }
+
+            .summary-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+            .summary-item { padding: 8px 6px; }
+            .summary-item .sales { font-size: 14px; }
+            .summary-section { padding: 12px; }
+            .total-highlight .value { font-size: 20px; }
+
+            table { font-size: 8px; }
+            thead th { padding: 4px 2px; font-size: 7px; }
+            tbody td { padding: 4px 2px; font-size: 8px; }
+
+            .premise-item { font-size: 10px; }
+            .note { font-size: 10px; padding: 10px; }
+        }
+
+        /* 超小型画面用 */
+        @media (max-width: 360px) {
             .summary-grid { grid-template-columns: 1fr; }
-            .summary-item .sales { font-size: 18px; }
-            table { font-size: 11px; }
+            table { font-size: 7px; }
+            thead th, tbody td { padding: 3px 2px; }
         }
     </style>
 </head>
